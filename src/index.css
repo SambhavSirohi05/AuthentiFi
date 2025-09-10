@@ -9,9 +9,51 @@
     font-family: 'Manrope', 'Noto Sans', sans-serif;
     margin: 0;
     padding: 0;
+    /* Optimize font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   
   * {
     box-sizing: border-box;
+  }
+
+  /* Optimize scrolling performance */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Optimize image loading */
+  img {
+    loading: lazy;
+    decoding: async;
+  }
+
+  /* Optimize animations */
+  * {
+    will-change: auto;
+  }
+
+  /* Critical CSS for above-the-fold content */
+  .critical-content {
+    contain: layout style paint;
+  }
+}
+
+@layer components {
+  /* Optimized glass morphism effect */
+  .glass-morphism {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    contain: layout style paint;
+  }
+
+  /* Optimized gradient backgrounds */
+  .gradient-bg {
+    background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+    background-attachment: fixed;
   }
 }

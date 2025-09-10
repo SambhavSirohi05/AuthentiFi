@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useMemo, useCallback } from 'react';
 import LaserFlow from './LaserFlow';
 
 const companyLogos = [
@@ -58,47 +58,57 @@ const LaserFlowWithLogos = () => {
   const [hoveredLogo, setHoveredLogo] = useState(null);
   const containerRef = useRef(null);
 
+  // Memoize the mouse move handler to prevent unnecessary re-renders
+  const handleMouseMove = useCallback((e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    // Check if mouse is near any logo
+    let nearestLogo = null;
+    let minDistance = Infinity;
+    
+    companyLogos.forEach((logo, index) => {
+      const logoX = (parseFloat(logo.position.x) / 100) * rect.width;
+      const logoY = (parseFloat(logo.position.y) / 100) * rect.height;
+      const distance = Math.sqrt((x - logoX) ** 2 + (y - logoY) ** 2);
+      
+      if (distance < 100 && distance < minDistance) {
+        minDistance = distance;
+        nearestLogo = index;
+      }
+    });
+    
+    setHoveredLogo(nearestLogo);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setHoveredLogo(null);
+  }, []);
+
+  // Memoize the laser flow props to prevent unnecessary re-renders
+  const laserFlowProps = useMemo(() => ({
+    horizontalBeamOffset: 0.0,
+    verticalBeamOffset: 0.05,
+    color: "#8B5CF6",
+    wispDensity: 1.0,
+    flowSpeed: 0.5,
+    fogIntensity: 0.4,
+    wispIntensity: 5.0,
+    verticalSizing: 1.4,
+    horizontalSizing: 0.3
+  }), []);
+
   return (
     <div 
       ref={containerRef}
       className="relative w-full h-full overflow-hidden"
       style={{ backgroundColor: '#060010' }}
-      onMouseMove={(e) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        // Check if mouse is near any logo
-        let nearestLogo = null;
-        let minDistance = Infinity;
-        
-        companyLogos.forEach((logo, index) => {
-          const logoX = (parseFloat(logo.position.x) / 100) * rect.width;
-          const logoY = (parseFloat(logo.position.y) / 100) * rect.height;
-          const distance = Math.sqrt((x - logoX) ** 2 + (y - logoY) ** 2);
-          
-          if (distance < 100 && distance < minDistance) {
-            minDistance = distance;
-            nearestLogo = index;
-          }
-        });
-        
-        setHoveredLogo(nearestLogo);
-      }}
-      onMouseLeave={() => setHoveredLogo(null)}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
       {/* LaserFlow Background */}
-      <LaserFlow
-        horizontalBeamOffset={0.0}
-        verticalBeamOffset={0.05}
-        color="#8B5CF6"
-        wispDensity={1.0}
-        flowSpeed={0.5}
-        fogIntensity={0.4}
-        wispIntensity={5.0}
-        verticalSizing={1.4}
-        horizontalSizing={0.3}
-      />
+      <LaserFlow {...laserFlowProps} />
       
       {/* Company Logos - Hidden by default, revealed on hover */}
       {companyLogos.map((logo, index) => (

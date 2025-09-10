@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { mockWalletCertificates } from '../data/mockData';
 import LaserFlowWithLogos from '../components/LaserFlowWithLogos';
 import axios from 'axios';
@@ -9,7 +9,33 @@ const SearchWallet = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [importedNFTs, setImportedNFTs] = useState([]);
 
-  const handleSearch = async () => {
+  // Memoize mock NFT data to prevent recreation on every render
+  const mockNFTs = useMemo(() => [
+    {
+      id: 'nft-1',
+      title: 'Blockchain Developer Certificate',
+      description: 'Certified blockchain developer with expertise in smart contracts',
+      issuer: 'Ethereum Foundation',
+      date: '2024-01-15',
+      status: 'Active',
+      tokenId: '12345',
+      contractAddress: '0x1234567890abcdef1234567890abcdef12345678',
+      image: null
+    },
+    {
+      id: 'nft-2',
+      title: 'Web3 Security Specialist',
+      description: 'Advanced certification in Web3 security protocols',
+      issuer: 'ConsenSys',
+      date: '2024-02-20',
+      status: 'Active',
+      tokenId: '67890',
+      contractAddress: '0x1234567890abcdef1234567890abcdef12345678',
+      image: null
+    }
+  ], []);
+
+  const handleSearch = useCallback(async () => {
     if (!walletAddress.trim()) return;
     
     setIsSearching(true);
@@ -35,30 +61,6 @@ const SearchWallet = () => {
       } catch (apiError) {
         console.log('OpenSea API failed, using mock data:', apiError.message);
         // Fallback to mock data
-        const mockNFTs = [
-          {
-            id: 'nft-1',
-            title: 'Blockchain Developer Certificate',
-            description: 'Certified blockchain developer with expertise in smart contracts',
-            issuer: 'Ethereum Foundation',
-            date: '2024-01-15',
-            status: 'Active',
-            tokenId: '12345',
-            contractAddress: '0x1234567890abcdef1234567890abcdef12345678',
-            image: null
-          },
-          {
-            id: 'nft-2',
-            title: 'Web3 Security Specialist',
-            description: 'Advanced certification in Web3 security protocols',
-            issuer: 'ConsenSys',
-            date: '2024-02-20',
-            status: 'Active',
-            tokenId: '67890',
-            contractAddress: '0x1234567890abcdef1234567890abcdef12345678',
-            image: null
-          }
-        ];
         setImportedNFTs(mockNFTs);
       }
       
@@ -71,7 +73,7 @@ const SearchWallet = () => {
     } finally {
       setIsSearching(false);
     }
-  };
+  }, [walletAddress, mockNFTs]);
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
