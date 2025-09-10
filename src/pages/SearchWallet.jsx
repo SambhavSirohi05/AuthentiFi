@@ -1,6 +1,6 @@
 import { useState, useMemo, useCallback } from 'react';
 import { mockWalletCertificates } from '../data/mockData';
-import LaserFlowWithLogos from '../components/LaserFlowWithLogos';
+import LaserBackground from '../components/LaserBackground';
 import axios from 'axios';
 
 const SearchWallet = () => {
@@ -84,9 +84,9 @@ const SearchWallet = () => {
 
   return (
     <div className="relative min-h-screen">
-      {/* LaserFlow Background with Company Logos */}
+      {/* LaserFlow Background */}
       <div className="absolute inset-0 z-0">
-        <LaserFlowWithLogos />
+        <LaserBackground searchResults={searchResults} importedNFTs={importedNFTs} />
       </div>
 
       {/* Main Content */}
@@ -101,7 +101,7 @@ const SearchWallet = () => {
             </div>
 
             {/* Search Section */}
-            <div className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-8 mb-8 shadow-2xl">
+            <div className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-8 mb-8 shadow-2xl max-w-2xl mx-auto">
               <div className="flex flex-col lg:flex-row gap-4">
                 <div className="flex-1">
                   <input
