@@ -211,7 +211,7 @@ const Dashboard = () => {
             </svg>
             <span className="text-white/60 text-sm">All certificates are verified on the blockchain</span>
           </div>
-          <div className="flex-1 overflow-y-auto space-y-2 pr-2 max-h-[400px]">
+          <div className="flex-1 overflow-y-auto space-y-2 pr-2 max-h-[400px] custom-scrollbar">
             {mockCertificates.map((certificate) => (
               <div key={certificate.id} className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-lg p-3 hover:bg-black/30 transition-all duration-300">
                 <div className="flex items-center justify-between mb-2">
@@ -280,7 +280,7 @@ const Dashboard = () => {
             </div>
             
             {/* Search Results */}
-            <div className="flex-1 overflow-y-auto max-h-[300px]">
+            <div className="flex-1 overflow-y-auto max-h-[300px] custom-scrollbar">
               {searchQuery ? (
                 filteredCertificates.length > 0 ? (
                   <div className="space-y-2">
