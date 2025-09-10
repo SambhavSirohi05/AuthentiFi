@@ -37,12 +37,12 @@ const LandingPage = () => {
               >
                 Get Started
               </Link>
-              <Link
-                to="/verify"
-                className="flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white text-lg font-bold rounded-xl hover:bg-white hover:text-black transition-colors min-w-[200px]"
-              >
-                Learn More
-              </Link>
+                          <Link
+                            to="/learn-more"
+                            className="flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white text-lg font-bold rounded-xl hover:bg-white hover:text-black transition-colors min-w-[200px]"
+                          >
+                            Learn More
+                          </Link>
             </div>
           </div>
         </div>

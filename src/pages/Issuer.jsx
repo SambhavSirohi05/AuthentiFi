@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import LiquidEther from '../components/LiquidEther';
 import { Cable, Link, BadgeCheck } from 'lucide-react';
+import { FileUpload } from '../components/ui/file-upload';
 
 const Issuer = () => {
   const [activeTab, setActiveTab] = useState('mint'); // 'mint' or 'send'
   const [mintFormData, setMintFormData] = useState({
     certificateTitle: '',
-    description: ''
+    description: '',
+    uploadedFiles: []
   });
   const [sendFormData, setSendFormData] = useState({
     studentWallet: '',
@@ -32,6 +34,13 @@ const Issuer = () => {
     }));
   };
 
+  const handleFileUpload = (files) => {
+    setMintFormData(prev => ({
+      ...prev,
+      uploadedFiles: files
+    }));
+  };
+
   const handleMintCertificate = async (e) => {
     e.preventDefault();
     
@@ -51,7 +60,8 @@ const Issuer = () => {
       // Reset form
       setMintFormData({
         certificateTitle: '',
-        description: ''
+        description: '',
+        uploadedFiles: []
       });
     }, 2000);
   };
@@ -137,11 +147,20 @@ const Issuer = () => {
                   </p>
                 </div>
                 
-                <form onSubmit={handleMintCertificate} className="space-y-6">
-                  <div>
-                    <label className="block text-white text-lg font-semibold mb-3">
-                      Certificate Title
-                    </label>
+            <form onSubmit={handleMintCertificate} className="space-y-6">
+              <div>
+                <label className="block text-white text-lg font-semibold mb-3">
+                  Certificate Image
+                </label>
+                <div className="border-2 border-white/20 rounded-xl p-4 bg-black/10 backdrop-blur-sm">
+                  <FileUpload onChange={handleFileUpload} />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-white text-lg font-semibold mb-3">
+                  Certificate Title
+                </label>
                     <input
                       type="text"
                       name="certificateTitle"

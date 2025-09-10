@@ -8,6 +8,7 @@ const Dashboard = lazy(() => import('./pages/Dashboard'));
 const SearchWallet = lazy(() => import('./pages/SearchWallet'));
 const Issuer = lazy(() => import('./pages/Issuer'));
 const WalletLogin = lazy(() => import('./pages/WalletLogin'));
+const LearnMore = lazy(() => import('./pages/LearnMore'));
 
 // Loading component
 const LoadingSpinner = () => (
@@ -26,15 +27,16 @@ function App() {
         <div className="layout-container flex h-full grow flex-col">
           <Sidebar />
           <div className="ml-16 flex-1">
-            <Suspense fallback={<LoadingSpinner />}>
-              <Routes>
-                <Route path="/" element={<LandingPage />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/search-wallet" element={<SearchWallet />} />
-                <Route path="/issuer" element={<Issuer />} />
-                <Route path="/wallet-login" element={<WalletLogin />} />
-              </Routes>
-            </Suspense>
+                        <Suspense fallback={<LoadingSpinner />}>
+                          <Routes>
+                            <Route path="/" element={<LandingPage />} />
+                            <Route path="/dashboard" element={<Dashboard />} />
+                            <Route path="/search-wallet" element={<SearchWallet />} />
+                            <Route path="/issuer" element={<Issuer />} />
+                            <Route path="/wallet-login" element={<WalletLogin />} />
+                            <Route path="/learn-more" element={<LearnMore />} />
+                          </Routes>
+                        </Suspense>
           </div>
         </div>
       </div>
