@@ -26,40 +26,45 @@ const LandingPage = () => {
       </div>
       
       {/* Hero Section - Full Screen */}
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Main Heading */}
-          <div className="mb-6">
-            <h1 className="text-white text-6xl md:text-7xl lg:text-8xl font-black leading-none tracking-tight mb-2">
-              AuthentiFi
-            </h1>
-            <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
-              Authentic Credentials, Verified on Blockchain.
-            </h2>
+      <div className="relative z-10 min-h-screen flex flex-col">
+        {/* Main Content */}
+        <div className="flex-1 flex items-center justify-center px-10">
+          <div className="max-w-4xl mx-auto text-center">
+            {/* Main Heading */}
+            <div className="mb-6">
+              <h1 className="text-white text-6xl md:text-7xl lg:text-8xl font-black leading-none tracking-tight mb-2">
+                AuthentiFi
+              </h1>
+              <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
+                Authentic Credentials, Verified on Blockchain.
+              </h2>
+            </div>
+            
+            {/* Subtitle */}
+            <p className="text-white/80 text-lg md:text-xl mb-12 max-w-2xl mx-auto">
+              No fake degrees. No delays. Just instant trust.
+            </p>
+            
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link
+                to="/dashboard"
+                className="flex items-center justify-center px-8 py-4 bg-white text-black text-lg font-bold rounded-xl hover:bg-white/90 transition-colors min-w-[200px]"
+              >
+                Get Started
+              </Link>
+              <Link
+                to="/verify"
+                className="flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white text-lg font-bold rounded-xl hover:bg-white hover:text-black transition-colors min-w-[200px]"
+              >
+                Learn More
+              </Link>
+            </div>
           </div>
-          
-          {/* Subtitle */}
-          <p className="text-white/80 text-lg md:text-xl mb-12 max-w-2xl mx-auto">
-            No fake degrees. No delays. Just instant trust.
-          </p>
-          
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-            <Link
-              to="/dashboard"
-              className="flex items-center justify-center px-8 py-4 bg-white text-black text-lg font-bold rounded-xl hover:bg-white/90 transition-colors min-w-[200px]"
-            >
-              Get Started
-            </Link>
-            <Link
-              to="/verify"
-              className="flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white text-lg font-bold rounded-xl hover:bg-white hover:text-black transition-colors min-w-[200px]"
-            >
-              Learn More
-            </Link>
-          </div>
-          
-          {/* Scroll Indicator */}
+        </div>
+        
+        {/* Scroll Indicator - At Bottom */}
+        <div className="flex justify-center pb-8">
           <div className="flex flex-col items-center gap-2 animate-bounce">
             <span className="text-white/60 text-sm font-medium">Scroll to know more</span>
             <svg 
