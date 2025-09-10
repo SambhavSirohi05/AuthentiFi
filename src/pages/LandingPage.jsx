@@ -84,14 +84,14 @@ const LandingPage = () => {
         </div>
       </div>
       
-      {/* How it Works Section - Below the fold */}
-      <div className="relative z-10 px-10 py-20">
+      {/* How it Works Section - Centered */}
+      <div className="relative z-10 min-h-screen flex items-center justify-center px-10 py-20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-white text-3xl font-bold text-center mb-16">How it Works</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Step 1 */}
-            <div className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-xl p-8 text-center shadow-2xl hover:bg-black/30 transition-all duration-300 group relative overflow-hidden">
+            <div className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-xl p-8 text-center shadow-2xl hover:bg-black/30 transition-all duration-300 group relative overflow-hidden aspect-square flex flex-col justify-center">
               {/* Liquid glass effect overlay */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
@@ -105,7 +105,7 @@ const LandingPage = () => {
             </div>
             
             {/* Step 2 */}
-            <div className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-xl p-8 text-center shadow-2xl hover:bg-black/30 transition-all duration-300 group relative overflow-hidden">
+            <div className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-xl p-8 text-center shadow-2xl hover:bg-black/30 transition-all duration-300 group relative overflow-hidden aspect-square flex flex-col justify-center">
               {/* Liquid glass effect overlay */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
@@ -119,7 +119,7 @@ const LandingPage = () => {
             </div>
             
             {/* Step 3 */}
-            <div className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-xl p-8 text-center shadow-2xl hover:bg-black/30 transition-all duration-300 group relative overflow-hidden">
+            <div className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-xl p-8 text-center shadow-2xl hover:bg-black/30 transition-all duration-300 group relative overflow-hidden aspect-square flex flex-col justify-center">
               {/* Liquid glass effect overlay */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               

@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import AuthentiFiLogo from '../assets/AuthentiFiLogo.png';
-import { LayoutDashboard, House, ShieldCheck, Landmark, LogIn, LogOut } from 'lucide-react';
+import { LayoutDashboard, House, Search, Landmark, LogIn, LogOut } from 'lucide-react';
 import { getWalletStatus, onAccountsChanged, onChainChanged } from '../utils/wallet';
 
 const Sidebar = () => {
@@ -99,7 +99,7 @@ const Sidebar = () => {
   const navItems = [
     { path: '/', label: 'Home', icon: House },
     { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { path: '/verify', label: 'Verify', icon: ShieldCheck },
+    { path: '/search-wallet', label: 'Search Wallet', icon: Search },
     { path: '/issuer', label: 'Issuer', icon: Landmark }
   ];
 
