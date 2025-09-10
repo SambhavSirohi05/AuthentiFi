@@ -6,23 +6,7 @@ const LandingPage = () => {
     <div className="relative min-h-screen">
       {/* LiquidEther Background */}
       <div className="absolute inset-0 z-0">
-        <LiquidEther
-          colors={['#5227FF', '#FF9FFC', '#B19EEF']}
-          mouseForce={50}
-          cursorSize={150}
-          isViscous={false}
-          viscous={30}
-          iterationsViscous={32}
-          iterationsPoisson={32}
-          resolution={0.8}
-          isBounce={false}
-          autoDemo={false}
-          autoSpeed={0.5}
-          autoIntensity={2.2}
-          takeoverDuration={0.25}
-          autoResumeDelay={3000}
-          autoRampDuration={0.6}
-        />
+        <LiquidEther />
       </div>
       
       {/* Hero Section - Full Screen */}
@@ -137,7 +121,7 @@ const LandingPage = () => {
       
       {/* Footer */}
       <footer className="relative z-10 px-10 py-10 text-center bg-black/30 backdrop-blur-sm">
-        <p className="text-white/60">© 2024 AuthentiFi. All rights reserved.</p>
+        <p className="text-white/60">© 2025 AuthentiFi. All rights reserved.</p>
       </footer>
     </div>
   );

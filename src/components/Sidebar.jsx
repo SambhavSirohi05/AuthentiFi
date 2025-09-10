@@ -108,16 +108,16 @@ const Sidebar = () => {
       {/* Sidebar Content */}
       <div className="h-full bg-black/20 backdrop-blur-xl border-r border-white/10 flex flex-col shadow-2xl">
         {/* Logo Section */}
-        <div className="flex items-center gap-3 px-4 py-6 border-b border-white/10">
+        <Link to="/" className="flex items-center gap-3 px-4 py-6 border-b border-white/10 hover:bg-white/5 transition-all duration-300 group/logo">
           <div className="size-8 flex-shrink-0">
             <img src={AuthentiFiLogo} alt="AuthentiFi Logo" className="w-full h-full object-contain" />
           </div>
           <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 whitespace-nowrap transform translate-x-[-10px] group-hover:translate-x-0">
-            <Link to="/" className="text-white text-lg font-bold leading-tight tracking-[-0.015em] hover:text-[#2a74ea] transition-colors duration-300">
+            <span className="text-white text-lg font-bold leading-tight tracking-[-0.015em] group-hover/logo:text-[#2a74ea] transition-colors duration-300">
               AuthentiFi
-            </Link>
+            </span>
           </div>
-        </div>
+        </Link>
 
         {/* Navigation Items */}
         <nav className="flex-1 px-3 py-6">
