@@ -46,10 +46,12 @@ const Sidebar = () => {
                     {/* Liquid glass effect overlay */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-500"></div>
                     
-                    <IconComponent 
-                      size={20} 
-                      className="flex-shrink-0 relative z-10" 
-                    />
+                    <div className="flex items-center justify-center w-full group-hover:w-auto group-hover:justify-start">
+                      <IconComponent 
+                        size={20} 
+                        className="flex-shrink-0 relative z-10" 
+                      />
+                    </div>
                     <span className="opacity-0 group-hover:opacity-100 transition-all duration-500 whitespace-nowrap font-medium relative z-10 transform translate-x-[-10px] group-hover:translate-x-0">
                       {item.label}
                     </span>
@@ -69,10 +71,12 @@ const Sidebar = () => {
             {/* Liquid glass effect overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover/button:opacity-100 transition-opacity duration-500"></div>
             
-            <LogIn 
-              size={20} 
-              className="flex-shrink-0 relative z-10" 
-            />
+            <div className="flex items-center justify-center w-full group-hover:w-auto group-hover:justify-start">
+              <LogIn 
+                size={20} 
+                className="flex-shrink-0 relative z-10" 
+              />
+            </div>
             <span className="opacity-0 group-hover:opacity-100 transition-all duration-500 whitespace-nowrap font-bold relative z-10 transform translate-x-[-10px] group-hover:translate-x-0">
               Sign In
             </span>
