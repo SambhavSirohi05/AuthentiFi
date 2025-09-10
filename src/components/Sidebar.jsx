@@ -1,9 +1,100 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import AuthentiFiLogo from '../assets/AuthentiFiLogo.png';
-import { LayoutDashboard, House, ShieldCheck, Landmark, LogIn } from 'lucide-react';
+import { LayoutDashboard, House, ShieldCheck, Landmark, LogIn, LogOut } from 'lucide-react';
+import { getWalletStatus, onAccountsChanged, onChainChanged } from '../utils/wallet';
 
 const Sidebar = () => {
   const location = useLocation();
+  const [isWalletConnected, setIsWalletConnected] = useState(false);
+
+  // Check wallet connection status
+  const checkWalletStatus = async () => {
+    const status = await getWalletStatus();
+    setIsWalletConnected(status.connected);
+  };
+
+  useEffect(() => {
+    checkWalletStatus();
+
+    // Listen for account changes (when user switches accounts or disconnects)
+    const handleAccountsChanged = () => {
+      checkWalletStatus();
+    };
+
+    // Listen for chain changes
+    const handleChainChanged = () => {
+      checkWalletStatus();
+    };
+
+    // Listen for custom wallet connection events
+    const handleWalletConnected = () => {
+      checkWalletStatus();
+    };
+
+    const handleWalletDisconnected = () => {
+      setIsWalletConnected(false);
+    };
+
+    // Set up event listeners
+    onAccountsChanged(handleAccountsChanged);
+    onChainChanged(handleChainChanged);
+    window.addEventListener('walletConnected', handleWalletConnected);
+    window.addEventListener('walletDisconnected', handleWalletDisconnected);
+
+    // Also check status periodically in case localStorage changes
+    const interval = setInterval(checkWalletStatus, 1000);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('walletConnected', handleWalletConnected);
+      window.removeEventListener('walletDisconnected', handleWalletDisconnected);
+    };
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      // If MetaMask is available, try to disconnect
+      if (window.ethereum) {
+        try {
+          // Request to disconnect the wallet
+          await window.ethereum.request({
+            method: 'wallet_revokePermissions',
+            params: [{ eth_accounts: {} }],
+          });
+        } catch (disconnectError) {
+          console.log('MetaMask disconnect not supported, clearing local data only');
+        }
+      }
+      
+      // Clear wallet connection data
+      localStorage.removeItem('walletConnected');
+      localStorage.removeItem('walletAddress');
+      localStorage.removeItem('walletNetwork');
+      
+      // Update state immediately
+      setIsWalletConnected(false);
+      
+      // Dispatch custom event to notify other components
+      window.dispatchEvent(new CustomEvent('walletDisconnected'));
+      
+      // Redirect to home page
+      window.location.href = '/';
+    } catch (error) {
+      console.error('Logout error:', error);
+      // Still clear local data even if there's an error
+      localStorage.removeItem('walletConnected');
+      localStorage.removeItem('walletAddress');
+      localStorage.removeItem('walletNetwork');
+      setIsWalletConnected(false);
+      
+      // Dispatch custom event
+      window.dispatchEvent(new CustomEvent('walletDisconnected'));
+      
+      // Redirect to home page
+      window.location.href = '/';
+    }
+  };
 
   const navItems = [
     { path: '/', label: 'Home', icon: House },
@@ -62,25 +153,45 @@ const Sidebar = () => {
           </ul>
         </nav>
 
-        {/* Sign In Button */}
+        {/* Sign In/Logout Button */}
         <div className="px-3 pb-6">
-          <Link
-            to="/wallet-login"
-            className="flex items-center gap-4 px-3 py-3 rounded-xl bg-[#292f38]/50 backdrop-blur-sm text-white hover:bg-[#1f2937]/70 hover:backdrop-blur-md transition-all duration-300 group/button relative overflow-hidden border border-white/10"
-          >
-            {/* Liquid glass effect overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover/button:opacity-100 transition-opacity duration-500"></div>
-            
-            <div className="flex items-center justify-center w-full group-hover:w-auto group-hover:justify-start">
-              <LogIn 
-                size={20} 
-                className="flex-shrink-0 relative z-10" 
-              />
-            </div>
-            <span className="opacity-0 group-hover:opacity-100 transition-all duration-500 whitespace-nowrap font-bold relative z-10 transform translate-x-[-10px] group-hover:translate-x-0">
-              Sign In
-            </span>
-          </Link>
+          {isWalletConnected ? (
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-4 px-3 py-3 rounded-xl bg-red-500/20 backdrop-blur-sm text-red-400 hover:bg-red-500/30 hover:backdrop-blur-md transition-all duration-300 group/button relative overflow-hidden border border-red-500/30 w-full"
+            >
+              {/* Liquid glass effect overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-500/5 to-transparent opacity-0 group-hover/button:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="flex items-center justify-center w-full group-hover:w-auto group-hover:justify-start">
+                <LogOut 
+                  size={20} 
+                  className="flex-shrink-0 relative z-10" 
+                />
+              </div>
+              <span className="opacity-0 group-hover:opacity-100 transition-all duration-500 whitespace-nowrap font-bold relative z-10 transform translate-x-[-10px] group-hover:translate-x-0">
+                Logout
+              </span>
+            </button>
+          ) : (
+            <Link
+              to="/wallet-login"
+              className="flex items-center gap-4 px-3 py-3 rounded-xl bg-[#292f38]/50 backdrop-blur-sm text-white hover:bg-[#1f2937]/70 hover:backdrop-blur-md transition-all duration-300 group/button relative overflow-hidden border border-white/10 w-full"
+            >
+              {/* Liquid glass effect overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover/button:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="flex items-center justify-center w-full group-hover:w-auto group-hover:justify-start">
+                <LogIn 
+                  size={20} 
+                  className="flex-shrink-0 relative z-10" 
+                />
+              </div>
+              <span className="opacity-0 group-hover:opacity-100 transition-all duration-500 whitespace-nowrap font-bold relative z-10 transform translate-x-[-10px] group-hover:translate-x-0">
+                Sign In
+              </span>
+            </Link>
+          )}
         </div>
       </div>
 

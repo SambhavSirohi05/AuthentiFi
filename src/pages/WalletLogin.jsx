@@ -25,6 +25,11 @@ const WalletLogin = () => {
       localStorage.setItem('walletAddress', walletData.address);
       localStorage.setItem('walletNetwork', walletData.network);
       
+      // Dispatch custom event to notify other components
+      window.dispatchEvent(new CustomEvent('walletConnected', { 
+        detail: { address: walletData.address, network: walletData.network } 
+      }));
+      
       // Redirect to dashboard after successful connection
       navigate('/dashboard');
     } catch (err) {
