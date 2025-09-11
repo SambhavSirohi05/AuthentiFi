@@ -8,7 +8,6 @@ const Dashboard = lazy(() => import('./pages/Dashboard'));
 const SearchWallet = lazy(() => import('./pages/SearchWallet'));
 const Issuer = lazy(() => import('./pages/Issuer'));
 const WalletLogin = lazy(() => import('./pages/WalletLogin'));
-const LearnMore = lazy(() => import('./pages/LearnMore'));
 
 // Loading component
 const LoadingSpinner = () => (
@@ -34,7 +33,6 @@ function App() {
                             <Route path="/search-wallet" element={<SearchWallet />} />
                             <Route path="/issuer" element={<Issuer />} />
                             <Route path="/wallet-login" element={<WalletLogin />} />
-                            <Route path="/learn-more" element={<LearnMore />} />
                           </Routes>
                         </Suspense>
           </div>

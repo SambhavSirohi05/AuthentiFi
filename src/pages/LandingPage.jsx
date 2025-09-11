@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import LiquidEther from '../components/LiquidEther';
+import { Shield, Zap, Globe, Users, Award, CheckCircle } from 'lucide-react';
 
 const LandingPage = () => {
   return (
@@ -37,12 +38,6 @@ const LandingPage = () => {
               >
                 Get Started
               </Link>
-                          <Link
-                            to="/learn-more"
-                            className="flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white text-lg font-bold rounded-xl hover:bg-white hover:text-black transition-colors min-w-[200px]"
-                          >
-                            Learn More
-                          </Link>
             </div>
           </div>
         </div>
@@ -68,52 +63,178 @@ const LandingPage = () => {
         </div>
       </div>
       
-      {/* How it Works Section - Centered */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center px-10 py-20">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-white text-3xl font-bold text-center mb-16">How it Works</h2>
+      {/* Key Features Section - Full Page Scroll */}
+      <div className="relative z-10 px-10 py-20">
+        <div className="max-w-7xl mx-auto w-full">
+          <h2 className="text-white text-4xl font-bold text-center mb-16">Key Features</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Step 1 */}
-            <div className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-xl p-8 text-center shadow-2xl hover:bg-black/30 transition-all duration-300 group relative overflow-hidden aspect-square flex flex-col justify-center">
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Feature 1 - Blockchain Security */}
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl p-6 text-center shadow-2xl hover:bg-white/20 transition-all duration-300 group relative overflow-hidden aspect-square flex flex-col justify-center">
               {/* Liquid glass effect overlay */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
-              <div className="w-16 h-16 mx-auto mb-6 bg-white/10 rounded-full flex items-center justify-center relative z-10">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256" className="text-white">
-                  <path d="M226.53,56.41l-96-32a8,8,0,0,0-5.06,0l-96,32A8,8,0,0,0,24,64v80a8,8,0,0,0,16,0V75.1L73.59,86.29a64,64,0,0,0,20.65,88.05c-18,7.06-33.56,19.83-44.94,37.29a8,8,0,1,0,13.4,8.74C77.77,197.25,101.57,184,128,184s50.23,13.25,65.3,36.37a8,8,0,0,0,13.4-8.74c-11.38-17.46-27-30.23-44.94-37.29a64,64,0,0,0,20.65-88l44.12-14.7a8,8,0,0,0,0-15.18ZM176,120A48,48,0,1,1,89.35,91.55l36.12,12a8,8,0,0,0,5.06,0l36.12-12A47.89,47.89,0,0,1,176,120ZM128,87.57,57.3,64,128,40.43,198.7,64Z"></path>
-                </svg>
+              <div className="w-16 h-16 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors relative z-10">
+                <Shield className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-white text-xl font-semibold mb-3 relative z-10">University Issues Certificate</h3>
-              <p className="text-white/70 relative z-10">Universities mint certificates as NFTs on the blockchain</p>
+              <h3 className="text-white text-xl font-semibold mb-4 relative z-10">Blockchain Security</h3>
+              <p className="text-white/70 text-sm leading-relaxed relative z-10">Certificates are stored on the immutable blockchain, making them impossible to forge or tamper with.</p>
             </div>
-            
-            {/* Step 2 */}
-            <div className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-xl p-8 text-center shadow-2xl hover:bg-black/30 transition-all duration-300 group relative overflow-hidden aspect-square flex flex-col justify-center">
+
+            {/* Feature 2 - Instant Verification */}
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl p-6 text-center shadow-2xl hover:bg-white/20 transition-all duration-300 group relative overflow-hidden aspect-square flex flex-col justify-center">
               {/* Liquid glass effect overlay */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
-              <div className="w-16 h-16 mx-auto mb-6 bg-white/10 rounded-full flex items-center justify-center relative z-10">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256" className="text-white">
-                  <path d="M216,72H56a8,8,0,0,1,0-16H192a8,8,0,0,0,0-16H56A24,24,0,0,0,32,64V192a24,24,0,0,0,24,24H216a16,16,0,0,0,16-16V88A16,16,0,0,0,216,72Zm0,128H56a8,8,0,0,1-8-8V86.63A23.84,23.84,0,0,0,56,88H216Zm-48-60a12,12,0,1,1,12,12A12,12,0,0,1,168,140Z"></path>
-                </svg>
+              <div className="w-16 h-16 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors relative z-10">
+                <Zap className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-white text-xl font-semibold mb-3 relative z-10">Student Stores in Wallet</h3>
-              <p className="text-white/70 relative z-10">Students receive and store certificates in their digital wallet</p>
+              <h3 className="text-white text-xl font-semibold mb-4 relative z-10">Instant Verification</h3>
+              <p className="text-white/70 text-sm leading-relaxed relative z-10">Verify any certificate instantly with just a few clicks. No more waiting for manual verification processes.</p>
             </div>
-            
-            {/* Step 3 */}
-            <div className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-xl p-8 text-center shadow-2xl hover:bg-black/30 transition-all duration-300 group relative overflow-hidden aspect-square flex flex-col justify-center">
+
+            {/* Feature 3 - Global Access */}
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl p-6 text-center shadow-2xl hover:bg-white/20 transition-all duration-300 group relative overflow-hidden aspect-square flex flex-col justify-center">
               {/* Liquid glass effect overlay */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
-              <div className="w-16 h-16 mx-auto mb-6 bg-white/10 rounded-full flex items-center justify-center relative z-10">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256" className="text-white">
-                  <path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"></path>
-                </svg>
+              <div className="w-16 h-16 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors relative z-10">
+                <Globe className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-white text-xl font-semibold mb-3 relative z-10">Employer Verifies Instantly</h3>
-              <p className="text-white/70 relative z-10">Employers verify credentials instantly on the blockchain</p>
+              <h3 className="text-white text-xl font-semibold mb-4 relative z-10">Global Access</h3>
+              <p className="text-white/70 text-sm leading-relaxed relative z-10">Access your certificates from anywhere in the world, 24/7. No geographical limitations.</p>
+            </div>
+
+            {/* Feature 4 - Multi-Party System */}
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl p-6 text-center shadow-2xl hover:bg-white/20 transition-all duration-300 group relative overflow-hidden aspect-square flex flex-col justify-center">
+              {/* Liquid glass effect overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="w-16 h-16 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors relative z-10">
+                <Users className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-white text-xl font-semibold mb-4 relative z-10">Multi-Party System</h3>
+              <p className="text-white/70 text-sm leading-relaxed relative z-10">Universities, students, and employers all benefit from a transparent, trustless system.</p>
+            </div>
+
+            {/* Feature 5 - Digital Credentials */}
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl p-6 text-center shadow-2xl hover:bg-white/20 transition-all duration-300 group relative overflow-hidden aspect-square flex flex-col justify-center">
+              {/* Liquid glass effect overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="w-16 h-16 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors relative z-10">
+                <Award className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-white text-xl font-semibold mb-4 relative z-10">Digital Credentials</h3>
+              <p className="text-white/70 text-sm leading-relaxed relative z-10">Modernize your credentials with digital certificates that are easy to share and verify.</p>
+            </div>
+
+            {/* Feature 6 - Verified Authenticity */}
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl p-6 text-center shadow-2xl hover:bg-white/20 transition-all duration-300 group relative overflow-hidden aspect-square flex flex-col justify-center">
+              {/* Liquid glass effect overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="w-16 h-16 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors relative z-10">
+                <CheckCircle className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-white text-xl font-semibold mb-4 relative z-10">Verified Authenticity</h3>
+              <p className="text-white/70 text-sm leading-relaxed relative z-10">Every certificate is cryptographically verified, ensuring 100% authenticity and trust.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Benefits for Everyone Section */}
+      <div className="relative z-10 px-10 py-16 bg-black/20 backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-white text-3xl font-bold text-center mb-12">Benefits for Everyone</h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* For Students */}
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl p-6 text-center shadow-2xl hover:bg-white/20 transition-all duration-300 group relative overflow-hidden">
+              {/* Liquid glass effect overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors relative z-10">
+                <Users className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-white text-xl font-bold mb-4 relative z-10">For Students</h3>
+              <ul className="text-white/70 space-y-2 text-left relative z-10">
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-4 h-4 text-white flex-shrink-0" />
+                  <span className="text-sm">Secure digital wallet for certificates</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-4 h-4 text-white flex-shrink-0" />
+                  <span className="text-sm">Easy sharing with employers</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-4 h-4 text-white flex-shrink-0" />
+                  <span className="text-sm">No risk of losing certificates</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-4 h-4 text-white flex-shrink-0" />
+                  <span className="text-sm">Instant verification anywhere</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* For Universities */}
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl p-6 text-center shadow-2xl hover:bg-white/20 transition-all duration-300 group relative overflow-hidden">
+              {/* Liquid glass effect overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors relative z-10">
+                <Award className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-white text-xl font-bold mb-4 relative z-10">For Universities</h3>
+              <ul className="text-white/70 space-y-2 text-left relative z-10">
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-4 h-4 text-white flex-shrink-0" />
+                  <span className="text-sm">Streamlined certificate issuance</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-4 h-4 text-white flex-shrink-0" />
+                  <span className="text-sm">Reduced administrative costs</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-4 h-4 text-white flex-shrink-0" />
+                  <span className="text-sm">Enhanced institutional reputation</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-4 h-4 text-white flex-shrink-0" />
+                  <span className="text-sm">Global recognition and trust</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* For Employers */}
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl p-6 text-center shadow-2xl hover:bg-white/20 transition-all duration-300 group relative overflow-hidden">
+              {/* Liquid glass effect overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors relative z-10">
+                <Shield className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-white text-xl font-bold mb-4 relative z-10">For Employers</h3>
+              <ul className="text-white/70 space-y-2 text-left relative z-10">
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-4 h-4 text-white flex-shrink-0" />
+                  <span className="text-sm">Instant credential verification</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-4 h-4 text-white flex-shrink-0" />
+                  <span className="text-sm">Eliminate fake certificates</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-4 h-4 text-white flex-shrink-0" />
+                  <span className="text-sm">Faster hiring processes</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-4 h-4 text-white flex-shrink-0" />
+                  <span className="text-sm">Reduced verification costs</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
